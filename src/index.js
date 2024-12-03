@@ -37,3 +37,13 @@ app.use("/api/auth", authRoute);
 app.listen(PORT, (req, res) => {
     console.log(`Server started on PORT ${PORT}`);
 })
+
+setInterval(() => {
+    axios.get('https://visionaibackend.onrender.com/')
+        .then(response => {
+            console.log('Pinged backend to keep it alive.');
+        })
+        .catch(error => {
+            console.error('Error pinging backend:', error);
+        });
+}, 2 * 60 * 1000);
